@@ -1,3 +1,24 @@
+
+# Short details
+This branch has 1 commit to demonstrate how to make a circular path in the Simple Particle System Example.
+![circular_path](http://i.imgur.com/UECwuhSl.png)
+
+# How to use?
+Use this branch with AndEngineExample: https://github.com/nicolasgramlich/AndEngineExamples
+
+During the time of writing, the commit that works with this branch in AndEngineExample is: 75b657b2cd7e1153e005a917753b6d0390e034d5
+
+Link for the lazy: https://github.com/nicolasgramlich/AndEngineExamples/commit/75b657b2cd7e1153e005a917753b6d0390e034d5
+
+
+Compile AndEngineExample, update AndEngine with this branch, then go to this: 
+![simple particle system](http://i.imgur.com/STvvFCGl.png)
+
+
+
+---
+--Original README below--
+---
 # AndEngine
 
 ## Building
