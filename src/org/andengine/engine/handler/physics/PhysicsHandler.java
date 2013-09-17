@@ -28,7 +28,7 @@ public class PhysicsHandler extends BaseEntityUpdateHandler {
 	protected float mVelocityY = 0;
 
 	protected float mAngularVelocity = 0;
-
+	protected double degreeTotalRad = 0;
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -124,11 +124,24 @@ public class PhysicsHandler extends BaseEntityUpdateHandler {
 			/* Apply linear acceleration. */
 			final float accelerationX = this.mAccelerationX;
 			final float accelerationY = this.mAccelerationY;
-			if(accelerationX != 0 || accelerationY != 0) {
-				this.mVelocityX += accelerationX * pSecondsElapsed;
-				this.mVelocityY += accelerationY * pSecondsElapsed;
-			}
-
+			float t = pSecondsElapsed;
+			float r = 100;
+			double degree = 36 * pSecondsElapsed;
+			double degreeRad = degree * Math.PI/180;
+			degreeTotalRad += degreeRad;
+			
+//			Log.d("ddw","accelerationX: "+accelerationX);
+//			Log.d("ddw","accelerationY: "+accelerationY);
+//			Log.d("ddw","pSecondsElapse: "+pSecondsElapsed);
+//			if(accelerationX != 0 || accelerationY != 0) {
+//				this.mVelocityX += accelerationX * pSecondsElapsed;
+//				this.mVelocityY += accelerationY * pSecondsElapsed;
+//			}
+			
+			
+//			Log.d("ddw","mVelocityX: "+accelerationX);
+//			Log.d("ddw","mVelocityY: "+accelerationY);
+			
 			/* Apply angular velocity. */
 			final float angularVelocity = this.mAngularVelocity;
 			if(angularVelocity != 0) {
@@ -136,11 +149,18 @@ public class PhysicsHandler extends BaseEntityUpdateHandler {
 			}
 
 			/* Apply linear velocity. */
-			final float velocityX = this.mVelocityX;
-			final float velocityY = this.mVelocityY;
-			if(velocityX != 0 || velocityY != 0) {
-				pEntity.setPosition(pEntity.getX() + velocityX * pSecondsElapsed, pEntity.getY() + velocityY * pSecondsElapsed);
-			}
+//			final float velocityX = this.mVelocityX;
+//			final float velocityY = this.mVelocityY;
+//			if(velocityX != 0 || velocityY != 0) {
+//				pEntity.setPosition(pEntity.getX() + velocityX * pSecondsElapsed, pEntity.getY() + velocityY * pSecondsElapsed);
+//			}
+			double new_x = r * Math.cos(Math.PI - degreeTotalRad);
+			double new_y = r - (r * Math.sin(Math.PI - degreeTotalRad));
+			pEntity.setPosition((float)new_x+200, (float)new_y+200);
+//			Log.d("ddw","original X: "+ pEntity.getX());
+//			Log.d("ddw","original Y: "+ pEntity.getY());
+//			Log.d("ddw","result X: "+ pEntity.getX() + velocityX * pSecondsElapsed);
+//			Log.d("ddw","result Y: "+ pEntity.getY() + velocityY * pSecondsElapsed);
 		}
 	}
 
