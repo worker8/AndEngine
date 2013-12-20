@@ -2,6 +2,8 @@ package org.andengine.ui.activity;
 
 import org.andengine.opengl.view.RenderSurfaceView;
 
+import android.os.Handler;
+
 /**
  * (c) 2010 Nicolas Gramlich
  * (c) 2011 Zynga Inc.
@@ -32,7 +34,7 @@ public abstract class LayoutGameActivity extends BaseGameActivity {
 
 	protected abstract int getLayoutID();
 	protected abstract int getRenderSurfaceViewID();
-
+	public Handler handler;
 	@Override
 	protected void onSetContentView() {
 		super.setContentView(this.getLayoutID());
@@ -40,6 +42,7 @@ public abstract class LayoutGameActivity extends BaseGameActivity {
 		this.mRenderSurfaceView = (RenderSurfaceView) this.findViewById(this.getRenderSurfaceViewID());
 
 		this.mRenderSurfaceView.setRenderer(this.mEngine, this);
+		handler = new Handler();
 	}
 
 	// ===========================================================
